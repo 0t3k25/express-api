@@ -4,7 +4,6 @@ const express = require('express');
 const multer = require('multer');
 //uuidモジュールを読み込む
 const { v4: uuidV4 } = require('uuid');
-
 //expressアプリを生成する
 const app = express();
 //multerでブラウザから送信されたデータを解釈する
@@ -29,7 +28,7 @@ app.post('/api/v1/add',(req, res) => {
     const todoTitle = todoData.title;
 
     //ユニークIDを生成する
-    const id = uuidv4();
+    const id = uuidV4();
 
     //TODO項目を作る
     const todoItem = {
@@ -46,6 +45,26 @@ app.post('/api/v1/add',(req, res) => {
 
     //追加した項目をクライアントに返す
     res.json(todoItem);
+});
+
+//http://localhost:3000/api/v1/item/:idにdeleteで送信してきた際
+//項目削除
+// http://localhost:3000/api/v1/item/cc7cf63c-ccaf-4401-a611-f19daec0f74e
+// にDELETEメソッドでアクセスすると、idがcc7cf63c-ccaf-4401-a611-f19daec0f74eのものが削除される
+
+app.delete('/api/v1/item/:id',(req,res) => {
+    //URLの:idと同じIDを持つ項目を検索
+    const index = todoList.findIndex((item) => item.id === req.param.id);
+    
+    //項目が見つかった場合
+    if(index >= 0){
+        const deleted = todoList.splice(index,1);
+        console.log('Delete:' + JSPM.stringify(deleted[0]));
+    }
+
+    //ステータスコード200:OKを送信
+    res.sendStatus(200);
+    
 });
 
 

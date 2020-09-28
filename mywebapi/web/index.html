@@ -17,12 +17,25 @@
     </div>
 
     <script>
+    //Deleteボタンを押した時に呼ばれる関数
+    function deleteButtonListener(event){
+        const button = event.currentTarget;
+        const od = button.dataset.id;
+        //deleteメソッドでAPIにアクセス
+        //削除後にリスト更新
+        fetch(`./api/v1/item/${id}`,{method:'DELETE'})
+        .then(() => fechTodoList());
+    }
+
+
     //TODOリストを描画する関数
     function renderTodoList(todoList) {
         //id="todo-container"要素を取得する
         const todoContainer = document.querySelector('#todo-container');
     
         //コンテナの中身を全部消す
+        const deleteButtonList = todoContainer.querySelectorAll('.delete-buttton');
+        deleteButtonList.forEach((button) => button.removeEventListener('chlick',deleteButtonListener)); 
         todoContainer.innerHTML = '';
         
         //JSONの各要素に対して
