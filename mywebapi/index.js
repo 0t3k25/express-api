@@ -55,7 +55,7 @@ app.post('/api/v1/add',(req, res) => {
 
 app.delete('/api/v1/item/:id',(req,res) => {
     //URLの:idと同じIDを持つ項目を検索
-    const index = todoList.findIndex((item) => item.id === req.param.id);
+    const index = todoList.findIndex((item) => item.id === req.params.id);
     
     //項目が見つかった場合
     if(index >= 0){
