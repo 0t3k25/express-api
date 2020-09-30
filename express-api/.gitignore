@@ -1,0 +1,10 @@
+# .h file 除外
+*.h
+#.bin file 除外
+*.bin
+#.md file 除外
+#node_modules 除外
+node_modules/
+
+
+
