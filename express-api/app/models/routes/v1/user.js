@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
-const UserModel = require('../../../models/userModel.js')
+const UserModel = require('../../userModel.js');
 
 router.post('/',function(req,res){
 
@@ -20,7 +20,7 @@ router.post('/',function(req,res){
             res.send(err);
         } else {
             //エラーがなければ「succrss!」
-            res.json({message:'SUccess!!'});
+            res.json({message:'Success!!'});
         }
     });
 });
