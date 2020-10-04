@@ -7,7 +7,13 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/ExpressAPI');
+mongoose.connect("mongodb://localhost:27017/ExpressAPI", {
+    "auth": { "authSource": "ExpressAPI" },
+    "user": "hure",
+    "pass": "1az0T871",
+    "useNewUrlParser": true
+});
+
 mongoose.connection.on('error',function(err){
     console.error('MongoDB connection error: '+ err);
     process.exit(-1);

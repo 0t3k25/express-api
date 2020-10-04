@@ -2,7 +2,7 @@
 //mongoDBに接続するためのライブラリ
 const mongoose = require('mongoose');
 //mongoDBのスキーマを作る
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 const moment = require('moment');
 
 const ArticleSchema = new Schema({

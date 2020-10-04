@@ -11,4 +11,4 @@ const UserSchema = new Schema({
 });
 
 //スキーマをモデルとしてコンパイルし、それをモジュールとして扱えるようにする
-module.exports = mongoose.model;('UserModel',UserSchema);
+module.exports = mongoose.model('UserModel',UserSchema);
